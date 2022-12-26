@@ -1,18 +1,17 @@
-﻿using Alura.LeilaoOnline.WebApp.Dados;
-using Alura.LeilaoOnline.WebApp.Models;
-using Alura.LeilaoOnline.WebApp.Services.Handlers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Alura.LeilaoOnline.WebApp.Dados;
+using Alura.LeilaoOnline.WebApp.Models;
 
-namespace Alura.LeilaoOnline.WebApp.Services
+namespace Alura.LeilaoOnline.WebApp.Services.Handlers
 {
     public class ArquivamentoAdminService:IAdminService
     {
         IAdminService _defaultService;
 
-        public ArquivamentoAdminService(ILeilaoDao dao)
+        public ArquivamentoAdminService(ILeilaoDao leilaoDao, ICategoriaDao categoriaDao)
         {
-            _defaultService = new DefaultAdminService(dao);
+            _defaultService = new DefaultAdminService(leilaoDao, categoriaDao);
         }
 
         public void CadastraLeilao(Leilao leilao)

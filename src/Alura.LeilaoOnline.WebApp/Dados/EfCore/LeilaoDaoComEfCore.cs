@@ -19,12 +19,14 @@ namespace Alura.LeilaoOnline.WebApp.Dados.EfCore
             _context.SaveChanges();
         }
 
-        public Leilao BuscarLeilaoPorId(int id) => _context.Leiloes.Find(id);        
-
-        public IEnumerable<Categoria> BuscarTodasCategorias() => _context.Categorias;
-
-        public IEnumerable<Leilao> BuscarTodosLeiloes() => _context.Leiloes.Include(l => l.Categoria);
-
+        public Leilao BuscarPorId(int id)
+        {
+            return _context.Leiloes.Find(id);
+        }
+        public IEnumerable<Leilao> BuscarTodos()
+        {
+            return _context.Leiloes.Include(l => l.Categoria);
+        }
         public void Excluir(Leilao leilao)
         {
             _context.Leiloes.Remove(leilao);
